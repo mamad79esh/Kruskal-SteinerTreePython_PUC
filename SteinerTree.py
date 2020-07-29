@@ -11,8 +11,6 @@ def buildSteinerTree(nodesNum,terminalNodes,connectedNodes, newEdges):
 
     for i in range(notTerminalNum):
 
-        graph, connectedNodesSize = Graph.buildGraph(connectedNodes, newEdges, nodesNum)
-
         size = len(connectedNodes)
         tempSize = len(connectedNodes)
 
@@ -36,10 +34,14 @@ def buildSteinerTree(nodesNum,terminalNodes,connectedNodes, newEdges):
                 connectedNodes.pop(i)
                 size -= 1
 
+
             i += 1
 
         if tempSize == size:
             break
 
         graph, connectedNodesSize = Graph.buildGraph(connectedNodes, newEdges, nodesNum)
+
     return newEdges
+
+

@@ -6,9 +6,7 @@ import SteinerTree
 
 # Reading file
 
-# FILENAME = input("Enter the file's name : ")
-
-FILENAME = "Data/hc9u.stp"
+FILENAME = "Data/"+input("Enter the file's name : Data/")
 
 inputFile = open(FILENAME, "r")
 
@@ -27,14 +25,11 @@ nodesNum = tuple[0]  # number of nodes
 terminalsNum = tuple[2]  # number of nodes
 
 
-
 newEdges = KruskalAlgorithm.KruskalAlgorithm(Edges, connectedNodes, nodesNum, edgesNum)
-
+print(Graph.calculateCost(newEdges))# MST
 
 newEdges = SteinerTree.buildSteinerTree(nodesNum, terminalNodes, connectedNodes, newEdges)
-
-
-
+print(Graph.calculateCost(newEdges))# Steiner
 
 outputFile = open("Output/" + FILENAME.split("/")[1].split('.')[0] + '.out', 'w')
 cost = Graph.calculateCost(newEdges)

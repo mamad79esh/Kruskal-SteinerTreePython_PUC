@@ -1,24 +1,23 @@
 import Edge
 
 
-def KruskalAlgorithm(edges,connectedNodes,nodesNum,edgesNum):
+def KruskalAlgorithm(edges, connectedNodes, nodesNum, edgesNum):
     edges = SortEdges(edges)
-    parent = [i for i in range(nodesNum+1)]
-    ssize = [1 for i in range(nodesNum+1)]
+    parent = [i for i in range(nodesNum + 1)]
+    ssize = [1 for i in range(nodesNum + 1)]
 
     def find(x):
         p = parent[x]
-        if p == x :
+        if p == x:
             return p
         parent[x] = find(p)
         return parent[x]
 
-
-    def union(x , y):
+    def union(x, y):
 
         rx = find(x)
         ry = find(y)
-        if  rx == ry :
+        if rx == ry:
             return None
 
         if ssize[ry] > ssize[rx]:
@@ -29,18 +28,17 @@ def KruskalAlgorithm(edges,connectedNodes,nodesNum,edgesNum):
         ssize[rx] += ssize[ry]
 
     newEdges = []
-    for i in range(len(edges)):
+    for i in range(edgesNum):
         x = find(edges[i].firstNode)
         y = find(edges[i].secondNode)
-        if  x != y :
+        if x != y:
             newEdges.append(edges[i])
-            union(x,y)
+            union(x, y)
 
+    return newEdges
 
     return newEdges
 
-
-    return newEdges
 
 def SortEdges(edges):  # Merge sort
     if len(edges) <= 1:
@@ -67,7 +65,6 @@ def merge(arr1, arr2):
         else:
             arr.append(arr2[j])
             j += 1
-
 
     while i < len(arr1):
         arr.append(arr1[i])

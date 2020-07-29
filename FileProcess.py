@@ -39,11 +39,11 @@ def fileProcess(inputFile):
                 sNode = int(dSplit[1])
                 w = int(dSplit[2])
 
-                if fNode not in connectedNodes and fNode <= nodesNum:
+                if ( fNode not in connectedNodes ) and fNode <= nodesNum:
                     connectedNodes.append(fNode)
 
-                if int(fNode) not in connectedNodes and fNode <= nodesNum:
-                    connectedNodes.append(fNode)
+                if (int(sNode) not in connectedNodes ) and sNode <= nodesNum:
+                    connectedNodes.append(sNode)
 
                 Edges.append(Edge.Edge(fNode, sNode, w))
 
